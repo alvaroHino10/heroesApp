@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Esta accion no se puede deshacer</h1>
+<div mat-dialog-content>
+  <p>Estas a punto de eliminar el heroe {{data.superhero}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button color="primary" (click)="onNoClick()"> No, gracias</button>
+  <span class="spacer"></span>
+  <button mat-button color="primary" (click)="onConfirm()"> Confirmar</button>
+</div>
