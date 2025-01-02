@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IconType } from '@angular/material/icon/testing';
+import { AuthService } from '../../../auth/services/auth.service';
+import { User } from '../../../auth/interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'heroes-layout-page',
@@ -15,4 +18,18 @@ export class LayoutPageComponent {
       {label: 'Agregar', icon: 'add', url: './new-hero'},
       {label: 'Buscar', icon: 'search', url: './search'},
     ]
+
+    constructor(
+      private authService: AuthService,
+      private router: Router
+    ) { }
+
+    onLogout() {
+      this.authService.logout();
+      this.router.navigate(['/auth/login']);
+    }
+
+    get currentUser(): User | undefined {
+      return this.authService.currentUser;
+    }
 }
